@@ -1,0 +1,22 @@
+{
+  "name": "sacredstarfamily",
+  "version": "1.0.0",
+  "description": "steemconnect for sustainable communities",
+  "main": "sacredstarfamily.js",
+  "dependencies": {
+    "steemconnect": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "console.log(\"hi\")"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sacredstarfamily"
+  },
+  "keywords": [
+    "sustainability"
+  ],
+  "author": "calebotamus",
+  "license": "ISC"
+}
