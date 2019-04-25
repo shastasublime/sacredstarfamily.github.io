@@ -2,7 +2,7 @@
   "name": "sacredstarfamily",
   "version": "1.0.0",
   "description": "steemconnect for sustainable communities",
-  "main": "sacredstarfamily.js",
+  "main": "index.html",
   "dependencies": {
     "steemconnect": "^2.0.1"
   },
