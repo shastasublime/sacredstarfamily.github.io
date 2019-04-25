@@ -9,6 +9,50 @@
 <body>
     
 <h1><center>welcome to sacredstarfamily<br>sustainable unity project</center></h1>
+<div id="main" class="Box p-4 my-4" v-cloak>
+    <div class="bg-gray text-center mb-4 p-4 rounded">
+        <h3>SteemConnect demo with Vue.js</h3>
+        <p>
+            <a target="_blank" href="https://github.com/steemscript/steemconnect.js/blob/master/docs/index.html">
+                See the code on GitHub
+            </a>
+        </p>
+    </div>
+    <p v-if="!isInit">Loading...</p>
+    <div v-else>
+        <button v-if="!username" @click="login" class="btn btn-large btn-primary">
+            Log in
+        </button>
+        <div v-if="username">
+            <p class="mb-4">
+                You are logged as <b>{{username}}</b>
+                <a href="#" @click="logout">logout</a>
+            </p>
+            <p class="mb-2">
+                Comment on the post
+                <a href="https://steemit.com/@siol/test" target="_blank">
+                    @siol/test
+                </a>
+            </p>
+            <textarea v-model="input" placeholder="Write a comment" class="form-control mb-2 btn-block text-left"
+                :disabled="isLoading"></textarea>
+            <div v-if="txId" class="flash flash-success mb-2">
+                <p>
+                    The transaction has been broadcasted, here is the tx id:
+                    <a :href="'https://steemd.com/tx/' + txId" target="_blank">
+                        <b>{{ txId }}</b>
+                    </a>
+                </p>
+            </div>
+            <div v-if="error" class="flash flash-error mb-2">
+                <p>{{ error.error_description || error.error }}</p>
+            </div>
+            <button @click="comment" class="btn btn-primary mb-2" :disabled="isLoading">
+                Submit
+            </button>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
     const sc = new steemconnect.Client({
