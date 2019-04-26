@@ -7,10 +7,45 @@
     </head>
     <body>
         <h1><center>sacredstarfamily Steemconnect</center></h1>
-        <button id="content">
-          login
-        </button>
-
+        <div id="content">
+          <button type="button"
+          onclick="login()"">login</button>
+        </div>
+<script>
+  window.onload = function () {
+      let params = (new URL(location)).searchParams;
+      const token = params.get('access_token') || localStorage.getItem('sc_token');
+      if (token) {
+        const self = this;
+        this.isInit = false;
+        sc.setAccessToken(token);
+        sc.me(function (err, result) {
+          if (result) self.username = result.name;
+          if (err) self.error = err;
+          localStorage.setItem('sc_token', token);
+          self.isInit = true;
+          console.log(err, result);
+        });
+      } else {
+        this.isInit = true;
+      }
+    },
+   function login() {
+          const self = this;
+          this.isLoading = true;
+          sc.login({}, function (err, token) {
+            if (err) return self.isLoading = false;
+            sc.setAccessToken(token);
+            sc.me(function (err, result) {
+              if (result) self.username = result.name;
+              if (err) self.error = err;
+              localStorage.setItem('sc_token', token);
+              self.isLoading = false;
+              console.log(err, result);
+            });
+          });
+        },
+</script>
 
 
     </body>
