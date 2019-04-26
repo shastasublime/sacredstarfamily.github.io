@@ -2,8 +2,8 @@ const sc2 = require('sc2-sdk');
 
 // init steemconnect
 let api = sc2.Initialize({
-    app: 'demo-app',
-    callbackURL: 'http://localhost:3000',
+    app: 'sacredstarfamily',
+    callbackURL: 'https://sacredstarfamily.github.io/success.html',
     accessToken: 'access_token',
     scope: ['vote', 'comment'],
 });
